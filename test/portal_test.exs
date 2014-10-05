@@ -4,8 +4,4 @@ defmodule PortalTest do
   test "the truth" do
     assert 1 + 1 == 2
   end
-
-  test "the lies" do
-    assert 1 * 1 == 2
-  end
 end
