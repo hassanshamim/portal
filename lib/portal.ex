@@ -50,6 +50,14 @@ defmodule Portal do
     # Return portal itself
     portal
   end
+
+  def push_left(portal) do
+    #newp = push_right(%Portal{left: portal.right, right: portal.left)
+    #flip_flop(push_right flip_flop(portal))
+    portal |> flip_flop |> push_right |> flip_flop
+  end
+
+  defp flip_flop(portal), do: %Portal{left: portal.right, right: portal.left}
 end
 
 defimpl Inspect, for: Portal do
