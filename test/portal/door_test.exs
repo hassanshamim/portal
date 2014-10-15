@@ -3,9 +3,15 @@ defmodule PortalDoorTest do
 
   setup do
     {:ok, door} = Portal.Door.start_link(:orange)
-    {:ok,
-      [door: door, color: :orange]
-    }
+
+    on_exit  fn ->
+      case  Process.whereis(:orange) do
+        nil -> nil
+        pid -> Process.exit(pid, :shutdown)
+      end
+    end
+
+    {:ok, [door: door, color: :orange] }
   end
 
   test "Create a Door by atom" do
