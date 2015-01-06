@@ -5,7 +5,7 @@ defmodule PortalDoorTest do
     {:ok, door} = Portal.Door.start_link(:orange)
 
     on_exit  fn ->
-      case  Process.whereis(:orange) do
+      case Process.whereis(:orange) do
         nil -> nil
         pid -> Process.exit(pid, :shutdown)
       end
